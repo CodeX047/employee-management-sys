@@ -1,8 +1,16 @@
 const employees = [
   {
     id: 1,
+    name: "Vishal",
     email: "vishal.patil@company.com",
     password: "123",
+    taskCount: {
+      total: 3,
+      active: 1,
+      newTask: 2,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         title: "Design Login Page",
@@ -40,8 +48,16 @@ const employees = [
   },
   {
     id: 2,
+    name: "Rohit",
     email: "rohit.sharma@company.com",
     password: "123",
+    taskCount: {
+      total: 3,
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1,
+    },
     tasks: [
       {
         title: "Database Schema Design",
@@ -79,8 +95,16 @@ const employees = [
   },
   {
     id: 3,
+    name: "Kunal",
     email: "kunal.s@company.com",
     password: "123",
+    taskCount: {
+      total: 3,
+      active: 1,
+      newTask: 2,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         title: "Create Dashboard UI",
@@ -119,8 +143,16 @@ const employees = [
   },
   {
     id: 4,
+    name: "Samshad",
     email: "mohd.samshad@company.com",
     password: "123",
+    taskCount: {
+      total: 3,
+      active: 1,
+      newTask: 1,
+      completed: 1,
+      failed: 1,
+    },
     tasks: [
       {
         title: "Setup MongoDB",
@@ -159,8 +191,16 @@ const employees = [
   },
   {
     id: 5,
+    name: "Rudra",
     email: "rudra.naik@company.com",
     password: "123",
+    taskCount: {
+      total: 3,
+      active: 1,
+      newTask: 2,
+      completed: 1,
+      failed: 0,
+    },
     tasks: [
       {
         title: "Deploy Project",
@@ -216,5 +256,5 @@ export const getLocalStorage = () => {
   const employees = JSON.parse(localStorage.getItem("employees"));
   const admin = JSON.parse(localStorage.getItem("admin"));
 
-  return{employees, admin};
+  return { employees, admin };
 };

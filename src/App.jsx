@@ -6,14 +6,35 @@ import { getLocalStorage, setLocalStorage } from "./utils/localStorage";
 import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
-  const [user, setuser] = useState(null);
+  const [user, setUser] = useState(null);
+  const [loggedInUserData, setLoggedInUserData] = useState(null);
   const authData = useContext(AuthContext);
+
+  useEffect(() => {
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      const userData = JSON.parse(loggedInUser);
+      setUser(userData.role);
+      setLoggedInUserData(userData.data);
+    }
+  }, []);
 
   const handleLogin = (email, password) => {
     if (email == "admin@company.com" && password == 123) {
-      setuser("admin");
-    } else if (email == "vishal.patil@company.com" && password == 123) {
-      setuser("employee");
+      setUser({ role: "admin" });
+      localStorage.setItem("loggedInUser", JSON.stringify({ role: "admin" }));
+    } else if (authData) {
+      const employee = authData.employees.find(
+        (e) => e.email == email && e.password == password
+      );
+      if (employee) {
+        setUser("employee");
+        setLoggedInUserData(employee);
+        localStorage.setItem(
+          "loggedInUser",
+          JSON.stringify({ role: "employee", data: employee })
+        );
+      }
     } else {
       alert("Invaild Credentials");
     }
@@ -22,7 +43,11 @@ const App = () => {
   return (
     <div className="text-white">
       {!user ? <Login handleLogin={handleLogin} /> : null}
-      {user == "admin" ? <AdminDashboard /> : <EmployeeDashboard />}
+      {user == "admin" ? (
+        <AdminDashboard />
+      ) : user == "employee" ? (
+        <EmployeeDashboard data={loggedInUserData} />
+      ) : null}
     </div>
   );
 };
