@@ -7,6 +7,7 @@ import { AuthContext } from "./context/AuthProvider";
 
 const App = () => {
   const [user, setuser] = useState(null);
+  const authData = useContext(AuthContext);
 
   const handleLogin = (email, password) => {
     if (email == "admin@company.com" && password == 123) {
@@ -17,10 +18,6 @@ const App = () => {
       alert("Invaild Credentials");
     }
   };
-
-  const data = useContext(AuthContext);
-
-  console.log(data)
 
   return (
     <div className="text-white">
