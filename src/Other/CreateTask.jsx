@@ -21,7 +21,7 @@ const CreateTask = () => {
       date,
       category,
       assignTo,
-      status: "Pending",
+      status: "In Progress",
       newTask: true,
       completed: false,
       failed: false,
