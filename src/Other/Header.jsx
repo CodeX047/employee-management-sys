@@ -1,7 +1,7 @@
-const Header = ({ data }) => {
+const Header = ({ data, changeUser }) => {
   const LogOutUser = () => {
     localStorage.setItem("loggedInUser", "");
-    window.location.reload();
+    changeUser("");
   };
 
   return (
@@ -12,7 +12,10 @@ const Header = ({ data }) => {
           {!data ? "Admin" : data.name} 👋
         </span>
       </h1>
-      <button onClick={LogOutUser} className="bg-red-600 hover:bg-red-700 transition-colors duration-200 text-white px-5 py-2 rounded-xl text-lg font-medium shadow-md shadow-red-900/30">
+      <button
+        onClick={LogOutUser}
+        className="bg-red-600 hover:bg-red-700 transition-colors duration-200 text-white px-5 py-2 rounded-xl text-lg font-medium shadow-md shadow-red-900/30"
+      >
         Log Out
       </button>
     </div>

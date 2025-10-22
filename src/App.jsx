@@ -44,9 +44,9 @@ const App = () => {
     <div className="text-white">
       {!user ? <Login handleLogin={handleLogin} /> : null}
       {user == "admin" ? (
-        <AdminDashboard />
+        <AdminDashboard changeUser={setUser} />
       ) : user == "employee" ? (
-        <EmployeeDashboard data={loggedInUserData} />
+        <EmployeeDashboard changeUser={setUser} data={loggedInUserData} />
       ) : null}
     </div>
   );
