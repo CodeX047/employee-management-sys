@@ -6,6 +6,17 @@ const AcceptTask = ({ data }) => {
 
   const updateLocalStorage = (updatedData) => {
     localStorage.setItem("employees", JSON.stringify(updatedData));
+
+    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    if (loggedInUser && loggedInUser.data) {
+      const updatedUserData = updatedData.find(
+        (emp) => emp.email === loggedInUser.data.email
+      );
+      localStorage.setItem(
+        "loggedInUser",
+        JSON.stringify({ ...loggedInUser, data: updatedUserData })
+      );
+    }
   };
 
   const markCompleted = () => {
@@ -24,6 +35,7 @@ const AcceptTask = ({ data }) => {
 
     setUserData(empData);
     updateLocalStorage(empData);
+    window.location.reload();
   };
 
   const markFailed = () => {
@@ -41,7 +53,8 @@ const AcceptTask = ({ data }) => {
     });
 
     setUserData(empData);
-    updateLocalStorage(empData)
+    updateLocalStorage(empData);
+    window.location.reload();
   };
 
   return (

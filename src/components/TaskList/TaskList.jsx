@@ -10,15 +10,16 @@ const TaskList = ({ data }) => {
       className="h-[60%] flex justify-start items-center gap-6 flex-nowrap w-full mt-10 py-5 overflow-x-auto text-black"
     >
       {data.tasks.map((elem, index) => {
-        if (elem.status == "In Progress") {
+        if (elem.status === "In Progress") {
           return <NewTask data={elem} key={index} />;
-        } else if (elem.status == "Pending") {
+        } else if (elem.status === "Pending") {
           return <AcceptTask data={elem} key={index} />;
-        } else if (elem.status == "Completed") {
+        } else if (elem.status === "Completed") {
           return <CompleteTask data={elem} key={index} />;
-        } else {
+        } else if (elem.status === "Failed") {
           return <FailedTask data={elem} key={index} />;
         }
+        return null;
       })}
     </div>
   );
