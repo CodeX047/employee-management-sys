@@ -1,84 +1,71 @@
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthProvider";
+
 const AllTask = () => {
+  const { employees } = useContext(AuthContext);
+
   return (
     <div className="bg-[#1c1c1c] text-white mt-12 p-8 rounded-2xl border border-gray-800 shadow-lg">
-      <h2 className="text-2xl font-semibold mb-6 text-center">All Tasks</h2>
+      <h2 className="text-2xl font-semibold mb-8 text-center">All Employees</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full text-left border-collapse border border-gray-800">
+          <thead className="bg-[#2a2a2a] text-gray-300 text-sm uppercase tracking-wider">
+            <tr>
+              <th className="py-3 px-4 border border-gray-800">ID</th>
+              <th className="py-3 px-4 border border-gray-800">Name</th>
+              <th className="py-3 px-4 border border-gray-800">Email</th>
+              <th className="py-3 px-4 border border-gray-800 text-center">
+                Total Tasks
+              </th>
+              <th className="py-3 px-4 border border-gray-800 text-center">
+                New
+              </th>
+              <th className="py-3 px-4 border border-gray-800 text-center">
+                Completed
+              </th>
+              <th className="py-3 px-4 border border-gray-800 text-center">
+                Failed
+              </th>
+              <th className="py-3 px-4 border border-gray-800 text-center">
+                In Progress
+              </th>
+            </tr>
+          </thead>
 
-      <div className="flex flex-wrap gap-6 justify-center">
-        {/* Single Task Card */}
-        <div className="bg-[#2a2a2a] w-[300px] rounded-xl p-6 shadow-md border border-gray-700 hover:scale-[1.02] transition-transform duration-200">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-semibold text-white">Vishal</h3>
-            <span className="bg-red-600 text-xs px-3 py-1 rounded-full font-medium">
-              High
-            </span>
-          </div>
-
-          <h4 className="text-xl font-semibold text-gray-100">
-            Make a UI Design
-          </h4>
-
-          <p className="text-sm text-gray-400 mt-2">
-            Create the frontend for the new task manager dashboard with Tailwind
-            and React components.
-          </p>
-
-          <div className="mt-5 flex justify-between items-center">
-            <span className="text-xs text-gray-400">Due: 25 Oct 2025</span>
-            <span className="text-sm font-medium text-yellow-400">
-              In Progress
-            </span>
-          </div>
-        </div>
-
-        {/* Example 2 */}
-        <div className="bg-[#2a2a2a] w-[300px] rounded-xl p-6 shadow-md border border-gray-700 hover:scale-[1.02] transition-transform duration-200">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-semibold text-white">Rohit</h3>
-            <span className="bg-blue-600 text-xs px-3 py-1 rounded-full font-medium">
-              Medium
-            </span>
-          </div>
-
-          <h4 className="text-xl font-semibold text-gray-100">
-            API Integration
-          </h4>
-
-          <p className="text-sm text-gray-400 mt-2">
-            Connect the backend APIs for user authentication and task
-            management.
-          </p>
-
-          <div className="mt-5 flex justify-between items-center">
-            <span className="text-xs text-gray-400">Due: 26 Oct 2025</span>
-            <span className="text-sm font-medium text-green-400">
-              Completed
-            </span>
-          </div>
-        </div>
-
-        {/* Example 3 */}
-        <div className="bg-[#2a2a2a] w-[300px] rounded-xl p-6 shadow-md border border-gray-700 hover:scale-[1.02] transition-transform duration-200">
-          <div className="flex justify-between items-center mb-3">
-            <h3 className="text-lg font-semibold text-white">Aayan</h3>
-            <span className="bg-yellow-500 text-xs px-3 py-1 rounded-full font-medium text-black">
-              Low
-            </span>
-          </div>
-
-          <h4 className="text-xl font-semibold text-gray-100">
-            Update Presentation Slides
-          </h4>
-
-          <p className="text-sm text-gray-400 mt-2">
-            Revise the pitch deck with updated design mockups and feature
-            screenshots.
-          </p>
-
-          <div className="mt-5 flex justify-between items-center">
-            <span className="text-xs text-gray-400">Due: 28 Oct 2025</span>
-            <span className="text-sm font-medium text-red-400">Pending</span>
-          </div>
-        </div>
+          <tbody>
+            {employees.map((emp, index) => (
+              <tr
+                key={index}
+                className="hover:bg-[#2e2e2e] transition-colors duration-150"
+              >
+                <td className="py-3 px-4 border border-gray-800 text-gray-400">
+                  {emp.id}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 font-medium">
+                  {emp.name}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-gray-400">
+                  {emp.email}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-center font-semibold text-gray-200">
+                  {emp.taskCount.total}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-center text-blue-400 font-medium">
+                  {emp.taskCount.newTask}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-center text-green-400 font-medium">
+                  {emp.taskCount.completed}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-center text-red-400 font-medium">
+                  {emp.taskCount.failed}
+                </td>
+                <td className="py-3 px-4 border border-gray-800 text-center text-yellow-400 font-medium">
+                  {emp.taskCount.active}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
