@@ -7,8 +7,22 @@ const CreateTask = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
+  const [task, setTask] = useState({});
+
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setTask({
+      title,
+      description,
+      date,
+      category,
+      assignTo,
+      status: "Pending",
+      newTask: true,
+      completed: false,
+      failed: false,
+    });
 
     setTitle("");
     setDate("");
