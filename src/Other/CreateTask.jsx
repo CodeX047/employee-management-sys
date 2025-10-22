@@ -1,11 +1,32 @@
+import { useState } from "react";
+
 const CreateTask = () => {
+  const [title, setTitle] = useState("");
+  const [date, setDate] = useState("");
+  const [assignTo, setAssignTo] = useState("");
+  const [category, setCategory] = useState("");
+  const [description, setDescription] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    setTitle("");
+    setDate("");
+    setAssignTo("");
+    setCategory("");
+    setDescription("");
+  };
+
   return (
     <div className="max-w-5xl mx-auto mt-12 bg-[#2a2a2a] rounded-2xl shadow-xl p-10 border border-gray-800">
       <h2 className="text-3xl font-semibold mb-10 text-center">
         Create New Task
       </h2>
 
-      <form className="flex flex-wrap gap-10 justify-between">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-wrap gap-10 justify-between"
+      >
         <div className="flex-1 min-w-[280px] flex flex-col gap-6">
           {/* Task Title */}
           <label className="flex flex-col gap-2">
@@ -15,8 +36,12 @@ const CreateTask = () => {
             <input
               type="text"
               name="title"
+              value={title}
               placeholder="Enter task title"
               className="bg-[#1c1c1c] border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(e) => {
+                setTitle(e.target.value);
+              }}
             />
           </label>
 
@@ -26,7 +51,11 @@ const CreateTask = () => {
             <input
               type="date"
               name="date"
+              value={date}
               className="bg-[#1c1c1c] border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(e) => {
+                setDate(e.target.value);
+              }}
             />
           </label>
 
@@ -36,8 +65,12 @@ const CreateTask = () => {
             <input
               type="text"
               name="assign"
+              value={assignTo}
               placeholder="Employee Name"
               className="bg-[#1c1c1c] border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(e) => {
+                setAssignTo(e.target.value);
+              }}
             />
           </label>
 
@@ -47,8 +80,12 @@ const CreateTask = () => {
             <input
               type="text"
               name="category"
+              value={category}
               placeholder="e.g. design, dev, marketing"
               className="bg-[#1c1c1c] border border-gray-700 text-white px-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(e) => {
+                setCategory(e.target.value);
+              }}
             />
           </label>
         </div>
@@ -62,8 +99,12 @@ const CreateTask = () => {
             <textarea
               name="description"
               rows="8"
+              value={description}
               placeholder="Enter task details..."
               className="bg-[#1c1c1c] border border-gray-700 text-white px-4 py-2 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-red-500"
+              onChange={(e) => {
+                setDescription(e.target.value);
+              }}
             />
           </label>
 
