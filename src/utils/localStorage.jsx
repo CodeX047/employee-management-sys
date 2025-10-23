@@ -4,10 +4,11 @@ const employees = [
     name: "Vishal",
     email: "vishal.patil@company.com",
     password: "123",
+    role: "employee",
     taskCount: {
       total: 3,
       active: 1,
-      newTask: 2,
+      newTask: 1,
       completed: 1,
       failed: 0,
     },
@@ -24,6 +25,16 @@ const employees = [
         failed: false,
       },
       {
+        title: "Fix Navbar Responsiveness",
+        description: "Adjust navbar layout for smaller screen devices.",
+        date: "2025-10-19",
+        category: "Frontend",
+        status: "Completed",
+        newTask: false,
+        completed: true,
+        failed: false,
+      },
+      {
         title: "Implement Authentication",
         description:
           "Set up user authentication using Firebase or local JSON data for now.",
@@ -34,16 +45,6 @@ const employees = [
         completed: false,
         failed: false,
       },
-      {
-        title: "Fix Navbar Responsiveness",
-        description: "Adjust navbar layout for smaller screen devices.",
-        date: "2025-10-19",
-        category: "Frontend",
-        status: "Completed",
-        newTask: false,
-        completed: true,
-        failed: false,
-      },
     ],
   },
   {
@@ -51,6 +52,7 @@ const employees = [
     name: "Rohit",
     email: "rohit.sharma@company.com",
     password: "123",
+    role: "employee",
     taskCount: {
       total: 3,
       active: 1,
@@ -98,10 +100,11 @@ const employees = [
     name: "Kunal",
     email: "kunal.s@company.com",
     password: "123",
+    role: "employee",
     taskCount: {
       total: 3,
       active: 1,
-      newTask: 2,
+      newTask: 1,
       completed: 1,
       failed: 0,
     },
@@ -118,17 +121,6 @@ const employees = [
         failed: false,
       },
       {
-        title: "Add Animations",
-        description:
-          "Use Framer Motion or GSAP to animate cards and transitions.",
-        date: "2025-10-21",
-        category: "Frontend",
-        status: "Pending",
-        newTask: true,
-        completed: false,
-        failed: false,
-      },
-      {
         title: "Fix Hover Effects",
         description:
           "Refine hover effects for consistency across dashboard cards.",
@@ -139,6 +131,17 @@ const employees = [
         completed: true,
         failed: false,
       },
+      {
+        title: "Add Animations",
+        description:
+          "Use Framer Motion or GSAP to animate cards and transitions.",
+        date: "2025-10-21",
+        category: "Frontend",
+        status: "Pending",
+        newTask: true,
+        completed: false,
+        failed: false,
+      },
     ],
   },
   {
@@ -146,6 +149,7 @@ const employees = [
     name: "Samshad",
     email: "mohd.samshad@company.com",
     password: "123",
+    role: "employee",
     taskCount: {
       total: 3,
       active: 1,
@@ -179,7 +183,7 @@ const employees = [
       {
         title: "Fix Task Deletion Bug",
         description:
-          "Resolve issue where deleting a task causes UI to not refresh properly.",
+          "Resolve issue where deleting a task causes the UI not to refresh properly.",
         date: "2025-10-21",
         category: "Development",
         status: "Failed",
@@ -194,6 +198,7 @@ const employees = [
     name: "Rudra",
     email: "rudra.naik@company.com",
     password: "123",
+    role: "employee",
     taskCount: {
       total: 3,
       active: 1,
@@ -242,8 +247,10 @@ const employees = [
 const admin = [
   {
     id: 1,
+    name: "Admin User",
     email: "admin@company.com",
     password: "123",
+    role: "admin",
   },
 ];
 
@@ -255,6 +262,11 @@ export const setLocalStorage = () => {
 export const getLocalStorage = () => {
   const employees = JSON.parse(localStorage.getItem("employees"));
   const admin = JSON.parse(localStorage.getItem("admin"));
-
   return { employees, admin };
+};
+
+export const clearLocalStorage = () => {
+  localStorage.removeItem("employees");
+  localStorage.removeItem("admin");
+  localStorage.removeItem("loggedInUser");
 };
