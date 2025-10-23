@@ -1,76 +1,130 @@
 # Employee Management System
 
-A modern web application built with React and Tailwind CSS for managing employee tasks and administrative operations.
+A modern web application for efficient task and employee management, built with React and Tailwind CSS.
 
-## 🚀 Features
+## ✨ Features
 
-### For Administrators
-- Create and assign tasks to employees
-- View all employees' task statistics
-- Monitor task progress and completion rates
-- Comprehensive dashboard with employee performance metrics
+### 👨‍💼 Admin Dashboard
 
-### For Employees
-- Personal dashboard with task overview
-- Task management with status updates
-- Visual categorization of tasks (New, In Progress, Completed, Failed)
-- Real-time task count statistics
+- Create and assign tasks to specific employees
+- Track employee performance metrics
+- View comprehensive task statistics
+- Monitor task completion rates
+- Real-time updates of task status
 
-## 💻 Tech Stack
+### 👤 Employee Dashboard
 
-- **Frontend Framework:** React
-- **Build Tool:** Vite
-- **Styling:** Tailwind CSS
-- **State Management:** Context API
-- **Storage:** Local Storage
+- Personalized task overview
+- Task status management workflow:
+  - New → In Progress → Completed/Failed
+- Visual task categorization
+- Real-time task statistics
+- Individual performance tracking
 
-## 🛠️ Installation
+## 🛠️ Tech Stack
+
+- **Frontend:** React 19
+- **Build Tool:** Vite 7
+- **Styling:** Tailwind CSS 4
+- **State Management:** React Context API
+- **Data Persistence:** Local Storage
+- **Code Quality:** ESLint
+
+## 📦 Installation & Setup
 
 1. Clone the repository:
-```bash
-git clone https://github.com/CodeX047/employee-management-sys.git
-```
 
-2. Navigate to the project directory:
 ```bash
+git clone https://github.com/yourusername/employee-management-sys.git
 cd employee-management-sys
 ```
 
-3. Install dependencies:
+2. Install dependencies:
+
 ```bash
 npm install
 ```
 
-4. Start the development server:
+3. Start development server:
+
 ```bash
 npm run dev
 ```
 
-## 🔑 Login Credentials
+4. Build for production:
 
-### Admin Access
-- Email: admin@company.com
-- Password: 123
+```bash
+npm run build
+```
 
-### Employee Access
-- Email: vishal.patil@company.com
-- Password: 123
-- (Other employee credentials available in localStorage.jsx)
+## 🔐 Authentication
+
+### Admin Credentials
+
+```
+Email: admin@company.com
+Password: 123
+```
+
+### Sample Employee Credentials
+
+```
+Email: vishal.patil@company.com
+Password: 123
+```
 
 ## 📁 Project Structure
 
 ```
-employee-management-sys/
-├── src/
-│   ├── components/
-│   │   ├── Auth/
-│   │   ├── Dashboard/
-│   │   └── TaskList/
-│   ├── context/
-│   ├── Other/
-│   ├── utils/
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-└── package.json
+src/
+├── components/
+│   ├── Auth/           # Authentication components
+│   ├── Dashboard/      # Admin and Employee dashboards
+│   └── TaskList/       # Task management components
+├── context/
+│   └── AuthProvider    # Authentication context
+├── Other/              # Shared components
+├── utils/              # Helper functions
+└── main.jsx           # Application entry point
+
 ```
+
+## 🎯 Core Functionality
+
+### Task Management
+
+- Create new tasks with title, description, due date
+- Assign tasks to specific employees
+- Track task status (New/In Progress/Completed/Failed)
+- View task details and history
+
+### User Management
+
+- Secure authentication system
+- Role-based access control (Admin/Employee)
+- Personal dashboard for each user
+- Task performance tracking
+
+## 🚀 Deployment
+
+1. Build the project:
+
+```bash
+npm run build
+```
+
+2. Preview the build:
+
+```bash
+npm run preview
+```
+
+The `dist` folder will contain the production-ready files.
+
+## 📝 Development Notes
+
+- Uses Vite for fast development experience
+- Implements modern React patterns and hooks
+- Follows ESLint code quality standards
+- Responsive design with Tailwind CSS
+- Local storage for data persistence
