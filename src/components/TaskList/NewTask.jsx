@@ -20,9 +20,10 @@ const NewTask = ({ data }) => {
   };
 
   const accept = () => {
+    console.log("done");
     const empData = [...userData];
 
-    emp.forEach((emp) => {
+    empData.forEach((emp) => {
       emp.tasks.forEach((t) => {
         if (data.title === t.title) {
           t.newTask = false;

@@ -35,9 +35,9 @@ const CreateTask = () => {
           ...emp,
           tasks: [...emp.tasks, newTask],
           taskCount: {
-            ...emp.tasksCount,
+            ...emp.taskCount,
             total: emp.taskCount.total + 1,
-            newTask: emp.tasksCount.newTask + 1,
+            newTask: emp.taskCount.newTask + 1,
             active: emp.taskCount.active + 1,
           },
         };
