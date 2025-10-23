@@ -35,7 +35,7 @@ A modern web application for efficient task and employee management, built with 
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/employee-management-sys.git
+git clone https://github.com/CodeX047/employee-management-sys.git
 cd employee-management-sys
 ```
 
@@ -82,7 +82,7 @@ src/
 │   ├── Dashboard/      # Admin and Employee dashboards
 │   └── TaskList/       # Task management components
 ├── context/
-│   └── AuthProvider    # Authentication context
+│   └── AuthProvider.jsx    # Authentication context
 ├── Other/              # Shared components
 ├── utils/              # Helper functions
 └── main.jsx           # Application entry point
