@@ -10,12 +10,14 @@ const CreateTask = () => {
   const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
 
-  const [newTask, setNewTask] = useState({});
+  const updateLocalStorage = (updatedData) => {
+    localStorage.setItem("employees", JSON.stringify(updatedData));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    setNewTask({
+    const newTask = {
       title,
       description,
       date,
@@ -25,18 +27,26 @@ const CreateTask = () => {
       newTask: true,
       completed: false,
       failed: false,
-    });
+    };
 
-    const data = userData;
-
-    data.forEach((emp) => {
-      if (assignTo == emp.name) {
-        emp.tasks.push(newTask);
-        emp.taskCount.newTask = emp.taskCount.newTask + 1;
+    const updatedData = userData.map((emp) => {
+      if (assignTo === emp.name) {
+        return {
+          ...emp,
+          tasks: [...emp.tasks, newTask],
+          taskCount: {
+            ...emp.tasksCount,
+            total: emp.taskCount.total + 1,
+            newTask: emp.tasksCount.newTask + 1,
+            active: emp.taskCount.active + 1,
+          },
+        };
       }
+      return emp;
     });
 
-    setUserData(data);
+    setUserData(updatedData);
+    updateLocalStorage(updatedData);
 
     setTitle("");
     setDate("");
